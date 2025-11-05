@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academia Culinária — Layout</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #faf7f6; }
+    .hero { background: linear-gradient(to right, #d64718, #652d2c); color: #fff; padding: 60px 20px; text-align: center; }
+    .hero h1 { font-size: 3rem; }
+    .hero img.decorative{position: absolute; top: 0; left: 0; witdh: 150px; height: auto; object-fit: contain;}
+    .hero a.botão{background-color:#d64718; position: absolute; top: 20px; right:20px; border-radius: 8px;padding: 60px 20px; color:#fff;border: none;}
+    .badge-custom { background: rgba(255,255,255,0.2); margin: 0 5px; }
+    .course-card img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
+    .price { font-weight: bold; color: #d64718; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Academia Culinária</h1>
+      <p >Aprenda culinária profissional com chefes experientes. Cursos práticos que transformam paixão em conhecimento.</p>
+      <div>
+        <span class="badge rounded-pill badge-custom">Certificado Profissional</span>
+        <span class="badge rounded-pill badge-custom">Aulas Práticas</span>
+        <span class="badge rounded-pill badge-custom">Técnicas Profissionais</span>
+      </div>
+    </div>
+    <img src="logo.png" alt="Decoração" class="decorative">
+    <a href="http://localhost/SITE%20DA%20MICHELLE/Chave%20de%20acesso.PHP" type="submit" class=" botão btn-pequeno w-20 py-1 py-2 fw-bold">Cadastrar ou fazer login</a>
+  </section>
+
+  <div class="container my-4">
+    <div class="container mt-4 p-4 border rounded shadow-sm bg-light">
+  <h5 class="mb-3">Filtros</h5>
+
+  <!-- Filtro por Período -->
+  <div class="mb-4">
+    <label class="form-label fw-bold">Período</label>
+    <div class="d-flex gap-2 flex-wrap">
+      <button class="btn btn-outline-secondary filtro-periodo">Esta Semana</button>
+      <button class="btn btn-outline-secondary filtro-periodo">Este Mês</button>
+      <button class="btn btn-outline-secondary filtro-periodo">Todos</button>
+      <div class="input-group w-50">
+      <input type="date" class="form-control" id="dataInicio">
+      <input type="date" class="form-control" id="dataFim">
+      <button class="btn btn-primary px-4" id="aplicarFiltro">Aplicar Filtro</button>
+    </div>
+    </div>
+  </div>
+
+
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+        <strong>Tipos de Culinária</strong>
+        <div class="mt-2">
+           <button class="btn btn-outline-secondary filtro">Pizza</button>
+           <button class="btn btn-outline-secondary filtro">Árabe</button>
+           <button class="btn btn-outline-secondary filtro">Italiana</button>
+           <button class="btn btn-outline-secondary filtro">Japonesa</button>
+
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
