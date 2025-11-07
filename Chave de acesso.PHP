@@ -1,8 +1,3 @@
-<?php
-session_start();
-require_once 'processa_login.php'; // lógica do login
-?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -55,7 +50,7 @@ require_once 'processa_login.php'; // lógica do login
         <button id="btn-cadastrar" class="botao btn btn-outline-light flex-fill fw-bold me-2">Cadastrar-se</button>
         <button id="btn-login" class="botao btn btn-light flex-fill fw-bold ms-2">Fazer Login</button>
       </div>
-
+      <!-- Div Login (Chamado pelo javascript)-->
       <div id="login-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
           <img src="cadeado.png" alt="Chave de Acesso" width="50">
@@ -66,18 +61,18 @@ require_once 'processa_login.php'; // lógica do login
           <div class="alert alert-danger"><?php echo $erro; ?></div>
         <?php endif; ?>
 
-        <form method="POST">
+        <form method="POST" action="processa_login.php">
           <input type="hidden" name="tipo_form" value="login">
-          <div class="mb-3">
+          <div class="mb-3"><!-- Campo de preenchimento do email -->
             <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
           </div>
-          <div class="mb-3">
+          <div class="mb-3"><!-- Campo de preenchimento do senha -->
             <input type="password" class="form-control" name="senha" placeholder="Senha" required>
           </div>
           <button type="submit" class="hero btn w-100 py-2 fw-bold">Entrar</button>
         </form>
       </div>
-    
+     <!-- Div Cadastro (Chamado pelo javascript) -->
      <div id="cadastrar-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
           <img src="cadeado.png" alt="Chave de Acesso" width="50">
@@ -88,31 +83,28 @@ require_once 'processa_login.php'; // lógica do login
           <div class="alert alert-danger"><?php echo $erro; ?></div>
         <?php endif; ?>
 
-        <form method="POST">
+        <form method="POST" action="cadastrar.php">
         <input type="hidden" name="tipo_form" value="cadastro">
-        <div class="mb-3">
+        <div class="mb-3"><!-- Campo de preenchimento do nome -->
             <input type="nome" class="form-control" name="nome" placeholder="nome" required>
-          </div>  
-        <div class="mb-3">
+          </div>
+        <div class="mb-3"><!-- Campo de preenchimento do celular -->
+            <input type="text" class="form-control" name="cell" placeholder="Telefone" required maxlength="11" pattern="[0-9]+" title="Digite apenas números"> <!--O "pattern" permite somente numeros de 0 a 9 impedindo de colocar caracteres-->
+          </div>     
+        <div class="mb-3"><!-- Campo de preenchimento do cpf -->
             <input type="cpf" class="form-control" name="cpf" placeholder="cpf" required>
           </div>
-        <div class="mb-3">
+        <div class="mb-3"><!-- Campo de preenchimento do email -->
             <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
           </div>
-          <div class="mb-3">
+          <div class="mb-3"><!-- Campo de preenchimento do senha -->
             <input type="password" class="form-control" name="senha" placeholder="Senha" required>
           </div>
           <button type="submit" class="hero btn w-100 py-2 fw-bold">Entrar</button>
         </form>
       </div>
     </div>
-    
     </div>
-
-
-   
-    
-    
     <!-- Lado direito -->
     <div class="col-6 bg-light">
       <!-- Espaço vazio -->
