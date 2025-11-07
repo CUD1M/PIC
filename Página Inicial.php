@@ -1,9 +1,17 @@
+<?php
+if(!isset($_SESSION)){
+  session_start();
+}
+
+?>
+
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Academia Culinária — Layout</title>
+  <title>Academia Gastronomica — Layout</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +26,8 @@
     .badge-custom { background: rgba(255,255,255,0.2); margin: 0 5px; }
     .course-card img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
     .price { font-weight: bold; color: #d64718; }
+    .user-info { position: absolute; top: 20px; right: 40px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(6px); color: #fff; padding: 8px 15px; border-radius: 10px; display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 0.9rem;}
+    .user-info a button { background-color: rgba(255, 255, 255, 0.25); color: #fff; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: background-color 0.2s ease; }
   </style>
 </head>
 
@@ -26,7 +36,29 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>Academia Culinária</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <img src="logo.png" alt="Decoração" class="decorative mt-3">
+        </div>
+        <div class="col-md-6">
+          <?php 
+            if(isset($_SESSION["id"])){
+          ?>
+              <div class="user-info">
+                <span><?php echo htmlspecialchars($_SESSION["nome"]); ?></span>
+                <?php if($_SESSION["id"]==1){ ?> <a href="admin.php"><button>Admin</button></a><?php } ?>
+                <a href="logout.php"><button>Logout</button></a>
+              </div>
+          <?php 
+            } else {
+          ?>
+          <a href="Chave de acesso.PHP" class="botão text-decoration-none">Login</a> <!--Redireciona para a página de cadastro-->
+          <?php
+            }
+        ?>
+      </div>
+    </div>
+      <h1>Academia Gastronomica</h1>
       <p>Aprenda culinária profissional com chefes experientes. Cursos práticos que transformam paixão em conhecimento.</p>
       <div>
         <span class="badge rounded-pill badge-custom">Certificado Profissional</span>
@@ -34,9 +66,6 @@
         <span class="badge rounded-pill badge-custom">Técnicas Profissionais</span>
       </div>
     </div>
-
-    <img src="logo.png" alt="Decoração" class="decorative">
-    <a href="Chave de acesso.PHP" class="botão">Cadastrar ou fazer login</a> <!--Redireciona para a página de cadastro-->
   </section>
 
 

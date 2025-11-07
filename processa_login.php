@@ -1,10 +1,10 @@
 <?php
-session_start();
+
 include("conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = real_escape_string($_POST["email"]); //comando usado para ignorar caracteres com funções SQL
-    $senha = real_escape_string($_POST["senha"]);
+    $email = $conn->real_escape_string($_POST['email']); //comando usado para ignorar caracteres com funções SQL
+    $senha = $conn->real_escape_string($_POST['senha']);
 
     // Busca o usuário pelo e-mail e status
     $sql = "SELECT * FROM usuario WHERE email = ?";
@@ -20,15 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($senha, $usuario["senha"])) {
 
             // Cria sessão
-            $_SESSION["usuario_id"] = $usuario["id"];
-            $_SESSION["usuario_nome"] = $usuario["nome"];
+            if(!isset($_SESSION)){
+                session_start();
+            }
+            $_SESSION["id"] = $usuario["id"];
+            $_SESSION["nome"] = $usuario["nome"];
 
             // Mensagem de boas-vindas
-            echo "<h2>Bem-vindo, " . htmlspecialchars($usuario["nome"]) . "!</h2>";
-            echo "<p><strong>CPF:</strong> " . htmlspecialchars($usuario["cpf"]) . "</p>";
-            echo "<p><strong>Telefone:</strong> " . htmlspecialchars($usuario["telefone"]) . "</p>";
-            echo "<p>Login realizado com sucesso.</p>";
-            echo "<a href='logout.php'>Sair</a>";
+            header("Location: Página Inicial.php");
 
         } else {
             // Senha incorreta

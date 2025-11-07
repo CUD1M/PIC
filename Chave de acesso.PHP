@@ -41,11 +41,10 @@
   </style>
 </head>
 <body>
-
 <div class="container-fluid p-0">
   <div class="row g-0 full-vh">
     <div class="col-5 d-flex flex-column align-items-center justify-content-start left-side py-3">
-      
+      <a href="Página Inicial.php"><img class="mb-3"src="logo.png" alt="LOGO"></a>
       <div class="d-flex w-100 px-3 mb-3">
         <button id="btn-cadastrar" class="botao btn btn-outline-light flex-fill fw-bold me-2">Cadastrar-se</button>
         <button id="btn-login" class="botao btn btn-light flex-fill fw-bold ms-2">Fazer Login</button>
