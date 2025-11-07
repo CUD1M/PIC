@@ -3,8 +3,8 @@ session_start();
 include("conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
+    $email = real_escape_string($_POST["email"]); //comando usado para ignorar caracteres com funções SQL
+    $senha = real_escape_string($_POST["senha"]);
 
     // Busca o usuário pelo e-mail e status
     $sql = "SELECT * FROM usuario WHERE email = ?";
@@ -32,11 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         } else {
             // Senha incorreta
-            echo "<script>alert('Senha incorreta!'); window.location.href='Chave de acesso.html';</script>";
+            echo "<script>alert('Senha incorreta!'); window.location.href='Chave de acesso.php';</script>";
         }
     } else {
         // Email não encontrado
-        echo "<script>alert('E-mail não encontrado!'); window.location.href='Chave de acesso.html';</script>";
+        echo "<script>alert('E-mail não encontrado!'); window.location.href='Chave de acesso.php';</script>";
     }
 
     $stmt->close();
