@@ -1,3 +1,13 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    if($_SESSION["id"]!=1){
+        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='Página Inicial.php';</script>";
+    } else { 
+    include ("conexao.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,7 +56,7 @@
 
     <nav class="nav navbar navbar-light bg-white shadow-sm px-3">
         <a class="navbar-brand fw-bold" href="#">Academia Culinária</a>
-        <button class="btn btn-outline-secondary">Sair</button>
+        <a href="Página Inicial.php"><button class="btn btn-outline-secondary">Sair</button></a>
     </nav>
 
     <div class="d-flex">
@@ -179,6 +189,45 @@
                         </div>
                     </div>
                 </div>
+                <?php //informações dos cursos presentes no DB
+                
+                    $response = $conn->query(
+                        "SELECT* FROM cursos"
+                    );
+                    if($response->num_rows>0){ //Verifica se existe algum curso cadastrado
+                        ?>
+                            <div class="row mt-4 g-4">
+                        <?php
+
+                        for($i=0;$i<$response->num_rows;$i++){ //laço da repetição para exibição dos cursos
+                            $response->data_seek($i);
+                            $array[]=$response->fetch_assoc();
+                            ?>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
+                                        <img src="https://i.imgur.com/6m7mXsr.jpeg" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
+                                        <div class="card-body d-flex flex-column">
+                                            <div>
+                                                <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
+                                                <div class="text-secondary small mb-3">
+                                                    <i class="bi bi-calendar-event"></i> 15/10/2025 às 14:00
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                                <span class="badge bg-light text-dark border">Pizza</span>
+                                                <button class="btn btn-danger">Inscreva-se</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                        }
+                    ?>
+                        <div class="row mt-4 g-4">
+                    <?php
+                    var_dump($array);
+                }
+                ?>
             </div>
 
             <div id="alunos" class="tab-content" style="display:none;">
@@ -225,10 +274,6 @@
                                 <label class="form-label">Número Máximo de Alunos *</label>
                                 <input type="number" class="form-control" name="max_alunos">
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Link de Pagamento </label>
-                            <input type="text" class="form-control" name="link_pagamento">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -286,3 +331,5 @@
     <script src="script/script_admin.js"> </script>
 </body>
 </html>
+
+<?php } ?>

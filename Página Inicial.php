@@ -2,7 +2,7 @@
 if(!isset($_SESSION)){
   session_start();
 }
-
+include ("conexao.php");
 ?>
 
 
@@ -106,33 +106,44 @@ if(!isset($_SESSION)){
         <button class="btn btn-outline-secondary filtro">Japonesa</button>
       </div>
     </div>
+    <!-- CARDS DOS CURSOS -->  
+    <?php      
+        $response = $conn->query(
+            "SELECT* FROM cursos"
+        );
+        if($response->num_rows>0){ //Verifica se existe algum curso cadastrado
+            ?>
+                <div class="row mt-4 g-4">
+            <?php
 
-
-    <!-- CARDS DOS CURSOS -->
-    <div class="row mt-4 g-4">
-
-      <div class="col-lg-3 col-md-6">
-        <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
-          <img src="https://i.imgur.com/6m7mXsr.jpeg" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
-          <div class="card-body d-flex flex-column">
-            <div>
-              <h5 class="fw-bold">Curso de Pizza Italiana</h5>
-              <div class="text-secondary small mb-3">
-                <i class="bi bi-calendar-event"></i> 15/10/2025 às 14:00
-              </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-auto">
-              <span class="badge bg-light text-dark border">Pizza</span>
-              <button class="btn btn-danger">Inscreva-se</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
-
+            for($i=0;$i<$response->num_rows;$i++){ //laço da repetição para exibição dos cursos
+                $response->data_seek($i);
+                $array[]=$response->fetch_assoc();
+                ?>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
+                            <img src="https://i.imgur.com/6m7mXsr.jpeg" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <div>
+                                    <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
+                                    <div class="text-secondary small mb-3">
+                                        <i class="bi bi-calendar-event"></i> 15/10/2025 às 14:00
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    <span class="badge bg-light text-dark border">Pizza</span>
+                                    <button class="btn btn-danger">Inscreva-se</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        ?>
+            <div class="row mt-4 g-4">
+        <?php
+        }
+    ?>
   </div>
 
   <!-- BOOTSTRAP JS -->
