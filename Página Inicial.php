@@ -122,7 +122,7 @@ include ("conexao.php");
                 ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
-                            <img src="https://i.imgur.com/6m7mXsr.jpeg" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
+                            <img src="<?php echo $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
                             <div class="card-body d-flex flex-column">
                                 <div>
                                     <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>

@@ -13,18 +13,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];
     $max_alunos = $_POST['max_alunos']; 
+    $imagem = $_FILES["foto_curso"];
+    $repertorio = "C:\\\\xampp\\\\htdocs\\\\PIC\\\\"; //Aqui vai o caminho do seu repertório
+    $caminho_imagem = $repertorio . $imagem['name'];
+    
+    $check = getimagesize($_FILES["foto_curso"]["tmp_name"]);
+    if($check === false) die("<script>alert('IMAGEM NÃO SELECIONADA!'); window.location.href='admin.php';</script>"); //checagem de imagem
 
+    if(!file_exists($caminho_imagem)){               
+        if(move_uploaded_file($_FILES["foto_curso"]["tmp_name"], $caminho_imagem)){ //salvando imagem
+        } else {
+            die("<script>alert('ERRO AO SALVAR A IMAGEM!'); window.location.href='admin.php';</script>"); //erro ao salvar imagem
+        }
+    }
     include("conexao.php"); //conexão ao banco de dados
-
-    $sql="INSERT into cursos(curso,descricao,preco,max_alunos)
-    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ")"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
+    $sql="INSERT into cursos(curso,descricao,preco,max_alunos,img_path,img_arq)
+    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $caminho_imagem . "','" . $imagem['name'] . "')"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
     $conn->query($sql); //escreve dentro do data_base
-    /*
-    $tipo_arquivo = pathinfo($_FILES["foto_curso"]["name"], PATHINFO_EXTENSION);
-    $nome_arquivo_unico = uniqid('curso_') . "." . $tipo_arquivo;
-    $caminho_imagem = $diretorio_uploads . $nome_arquivo_unico;
-    move_uploaded_file($_FILES["foto_curso"]["tmp_name"], $caminho_imagem);
-    */
     header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 }

@@ -205,17 +205,16 @@
                             ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
-                                        <img src="https://i.imgur.com/6m7mXsr.jpeg" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
+                                        <img src="<?php echo $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;"> <!--Cominho da imagem-->
                                         <div class="card-body d-flex flex-column">
                                             <div>
                                                 <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
                                                 <div class="text-secondary small mb-3">
-                                                    <i class="bi bi-calendar-event"></i> 15/10/2025 às 14:00
+                                                    <i class="bi bi-calendar-event"></i> --
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mt-auto">
-                                                <span class="badge bg-light text-dark border">Pizza</span>
-                                                <button class="btn btn-danger">Inscreva-se</button>
+                                                <span class="badge bg-light text-dark border">--</span>
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +315,7 @@
 
                     
                 </div>
-                </div>
+            </div>
             
             <div class="modal-footer d-block border-0 pt-0">
                 <button type="submit" class="btn text-white w-100 mb-2 py-2" style="background-color: #e85966; border-color: #e85966;">Excluir</button>
