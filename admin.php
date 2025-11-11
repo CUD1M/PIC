@@ -257,32 +257,45 @@
                 
                     <div class="col-md-8">
                         <div class="mb-3">
-                            <label class="form-label">Nome do Curso *</label>
+                            <label class="form-label">Nome do Curso  <span style="color:red">*</span></label>
                             <input type="text" class="form-control" name="nome_curso" placeholder="Ex: Curso de Pizza Italiana" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Descrição *</label>
+                            <label class="form-label">Descrição  <span style="color:red">*</span></label>
                             <textarea class="form-control" rows="3" name="descricao" placeholder="Descreva o que será ensinado no curso..." required></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Preço (R$) *</label>
+                                <label class="form-label">Preço (R$)  <span style="color:red">*</span></label>
                                 <input type="number" class="form-control" name="preco" step="0.01" min="0" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Número Máximo de Alunos *</label>
+                                <label class="form-label">Número Máximo de Alunos  <span style="color:red">*</span></label>
                                 <input type="number" class="form-control" name="max_alunos" requiered>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Data Inicial do Curso *</label>
+                                <label class="form-label">Data Inicial do Curso  <span style="color:red">*</span></label>
                                 <input type="date" class="form-control" name="data" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Horário do Curso *</label>
+                                <label class="form-label">Horário do Curso  <span style="color:red">*</span></label>
                                 <input type="time" class="form-control" name="hora" requiered>
                             </div>
+                            <div class="mb-3">
+                            <label class="form-label">Professores <span style="color:red">*</span></label>
+                            <select class="form-control" name="nome_professor" required>
+                                <option value="" disabled selected hidden>Escolha o professor</option>
+                                <option value="option1">Nome 1</option>
+                                <option value="option2">Nome 2</option>
+                                <option value="option3">Nome 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categoria do Curso <span style="color:red">*</span></label>
+                            <input type="text" class="form-control" name="categoria_curso" required>
+                        </div>
                         </div>
                     </div>
                     <div class="modal-footer">

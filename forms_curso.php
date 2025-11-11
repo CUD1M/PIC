@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imagem = $_FILES["foto_curso"];
     $data = $_POST["data"];
     $hora = $_POST["hora"];
+    $professor = $_POST["nome_professor"];
+    $categoria_curso = $_POST["categoria_curso"];
     $repertorio = "C:\\\\xampp\\\\htdocs\\\\PIC\\\\"; //Aqui vai o caminho do seu repertório
     $caminho_imagem = $repertorio . $imagem['name'];
     
@@ -30,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     include("conexao.php"); //conexão ao banco de dados
-    $sql="INSERT into cursos(curso,descricao,preco,max_alunos,`data`,hora,img_path,img_arq)
-    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $data . "','" . $hora . "','" .  $caminho_imagem . "','" . $imagem['name'] . "');"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
+    $sql="INSERT into cursos(curso,descricao,preco,max_alunos,`data`,hora,nome_professor,categoria_curso,img_path,img_arq)
+    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $data . "','" . $hora . "','" . $professor  . "','" .  $categoria_curso  . "','" . $caminho_imagem . "','" . $imagem['name'] . "');"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
     $conn->query($sql); //escreve dentro do data_base
     $sql="SELECT id FROM cursos WHERE curso='".$curso."';";
     $resultado = $conn->query($sql);

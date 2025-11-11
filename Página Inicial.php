@@ -100,10 +100,20 @@ include ("conexao.php");
       <!-- TIPOS DE CULINÁRIA -->
       <strong>Tipos de Culinária</strong>
       <div class="mt-2 d-flex gap-2 flex-wrap">
-        <button class="btn btn-outline-secondary filtro">Pizza</button>
-        <button class="btn btn-outline-secondary filtro">Árabe</button>
-        <button class="btn btn-outline-secondary filtro">Italiana</button>
-        <button class="btn btn-outline-secondary filtro">Japonesa</button>
+        <?php
+        $sql = "SELECT DISTINCT categoria_curso FROM cursos ORDER BY categoria_curso ASC";
+        $categorias = $conn->query($sql);
+
+        if($categorias->num_rows > 0) {
+          while ($cat = $categorias->fetch_assoc()){
+            $nome = htmlspecialchars($cat['categoria_curso']);
+            echo '<button class="btn btn-outline-secondary filtro">' . $nome . '</button>';
+          
+          }
+        } else {
+           echo '<span class="text-muted">Nenhuma categoria cadastrada</span>';
+        }
+        ?>
       </div>
     </div>
     <!-- CARDS DOS CURSOS -->  
@@ -127,11 +137,11 @@ include ("conexao.php");
                                 <div>
                                     <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
                                     <div class="text-secondary small mb-3">
-                                        <i class="bi bi-calendar-event"></i> 15/10/2025 às 14:00
+                                        <i class="bi bi-calendar-event"></i> <?php echo $array[$i]['data']. ' às ' . $array[$i]['hora'] ?>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
-                                    <span class="badge bg-light text-dark border">Pizza</span>
+                                    <span class="badge bg-light text-dark border"><?php echo $array[$i]['categoria_curso']?></span>
                                     <button class="btn btn-danger">Inscreva-se</button>
                                 </div>
                             </div>
