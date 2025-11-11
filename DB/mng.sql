@@ -35,6 +35,8 @@ CREATE TABLE `cursos` (
   `data` date NOT NULL,
   `hora` time NOT NULL,
   `max_alunos` int(11) NOT NULL,
+  `nome_professor` varchar(100) NOT NULL,
+  `categoria_curso` varchar(100) NOT NULL,
   `img_path` text NOT NULL,
   `img_arq` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
