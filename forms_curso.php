@@ -37,9 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->query($sql); //escreve dentro do data_base
     $sql="SELECT id FROM cursos WHERE curso='".$curso."';";
     $resultado = $conn->query($sql);
-    /*echo $resultado->num_rows; EM DESENVOLVIMENTO
-    echo $curso;
-    var_dump($resultado);*/
+    /*$exibir = $resultado->fetch_assoc(); EM DESENVOLVIMENTO
+    echo $exibir["id"];*/
     header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 }
