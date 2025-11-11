@@ -251,27 +251,37 @@
                             <i class="bi bi-cloud-upload-fill text-muted" style="font-size: 50px;"></i>
                             <p class="text-muted">Arraste ou cole a foto aqui</p>
                             <label for="imageUpload" class="btn btn-sm btn-outline-secondary mt-2">Selecionar Arquivo</label>
-                            <input type="file" id="imageUpload" class="form-control d-none" name="foto_curso" accept=".png, .jpg, .jpeg">
+                            <input type="file" id="imageUpload" class="form-control d-none" name="foto_curso" accept=".png, .jpg, .jpeg" required>
                         </div>
                     </div>
                 
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label class="form-label">Nome do Curso *</label>
-                            <input type="text" class="form-control" name="nome_curso" placeholder="Ex: Curso de Pizza Italiana">
+                            <input type="text" class="form-control" name="nome_curso" placeholder="Ex: Curso de Pizza Italiana" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Descrição *</label>
-                            <textarea class="form-control" rows="3" name="descricao" placeholder="Descreva o que será ensinado no curso..."></textarea>
+                            <textarea class="form-control" rows="3" name="descricao" placeholder="Descreva o que será ensinado no curso..." required></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Preço (R$) *</label>
-                                <input type="text" class="form-control" name="preco">
+                                <input type="number" class="form-control" name="preco" step="0.01" min="0" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Número Máximo de Alunos *</label>
-                                <input type="number" class="form-control" name="max_alunos">
+                                <input type="number" class="form-control" name="max_alunos" requiered>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Data Inicial do Curso *</label>
+                                <input type="date" class="form-control" name="data" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Horário do Curso *</label>
+                                <input type="time" class="form-control" name="hora" requiered>
                             </div>
                         </div>
                     </div>

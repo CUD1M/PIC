@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/11/2025 às 22:34
+-- Tempo de geração: 11/11/2025 às 18:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.1.25
 
@@ -28,21 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cursos` (
-  `id` int(11) NOT NULL,
-  `curso` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `curso` varchar(100) NOT NULL UNIQUE,
   `descricao` text NOT NULL,
-  `preco` float NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
   `max_alunos` int(11) NOT NULL,
   `img_path` text NOT NULL,
   `img_arq` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `cursos`
---
-
-INSERT INTO `cursos` (`id`, `curso`, `descricao`, `preco`, `max_alunos`, `img_path`, `img_arq`) VALUES
-(13, 'Casa Mine', 'Aprenda a construir uma casa no mine', 150, 10, 'C:\\xampp\\htdocs\\PIC\\Captura de tela 2025-05-31 142946.png', 'Captura de tela 2025-05-31 142946.png');
 
 -- --------------------------------------------------------
 
@@ -51,7 +46,7 @@ INSERT INTO `cursos` (`id`, `curso`, `descricao`, `preco`, `max_alunos`, `img_pa
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -60,49 +55,8 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuario`
+-- Criando o Usuário Admin
 --
 
 INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `telefone`, `cpf`) VALUES
-(1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000'),
-(4, 'benaiafurtado@gmail.com', '$2y$10$j0b5droBBUfN/k7Te.vpqObxwAHMlYUPEBHO15ei6nNceEdNSdruO', 'RAFAEL BENAIA DE SOUZA FURTADO', '19999012429', '49182029857'),
-(5, 'leticia@gmail.com', '$2y$10$U4qA/9UasIWWCR1XxANB6OjOG.5ObHwKsUt3X3Aa/jsAUK4miCKmu', 'Leticia da Dores', '6439554313', '49858164858');
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices de tabela `cursos`
---
-ALTER TABLE `cursos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `cpf` (`cpf`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT para tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `cursos`
---
-ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT de tabela `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000');

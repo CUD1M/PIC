@@ -9,13 +9,16 @@ $diretorio_uploads = "Imagens dos cursos/";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /*     VARIAVEIS FORMS       */
-    $curso = $_POST['nome_curso'];
-    $descricao = $_POST['descricao'];
-    $preco = $_POST['preco'];
+    $curso = $_POST["nome_curso"];
+    $descricao = $_POST["descricao"];
+    $preco = $_POST["preco"];
     $max_alunos = $_POST['max_alunos']; 
     $imagem = $_FILES["foto_curso"];
+    $data = $_POST["data"];
+    $hora = $_POST["hora"];
     $repertorio = "C:\\\\xampp\\\\htdocs\\\\PIC\\\\"; //Aqui vai o caminho do seu repertório
     $caminho_imagem = $repertorio . $imagem['name'];
+    
     
     $check = getimagesize($_FILES["foto_curso"]["tmp_name"]);
     if($check === false) die("<script>alert('IMAGEM NÃO SELECIONADA!'); window.location.href='admin.php';</script>"); //checagem de imagem
@@ -27,9 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     include("conexao.php"); //conexão ao banco de dados
-    $sql="INSERT into cursos(curso,descricao,preco,max_alunos,img_path,img_arq)
-    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $caminho_imagem . "','" . $imagem['name'] . "')"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
+    $sql="INSERT into cursos(curso,descricao,preco,max_alunos,`data`,hora,img_path,img_arq)
+    VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $data . "','" . $hora . "','" .  $caminho_imagem . "','" . $imagem['name'] . "');"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
     $conn->query($sql); //escreve dentro do data_base
+    $sql="SELECT id FROM cursos WHERE curso='".$curso."';";
+    $resultado = $conn->query($sql);
+    /*echo $resultado->num_rows; EM DESENVOLVIMENTO
+    echo $curso;
+    var_dump($resultado);*/
     header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 }
