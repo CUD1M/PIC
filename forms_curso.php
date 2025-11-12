@@ -5,8 +5,7 @@
     if($_SESSION["id"]!=1){
         echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='Página Inicial.php';</script>";
     } else { 
-$diretorio_uploads = "Imagens dos cursos/";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /*     VARIAVEIS FORMS       */
     $curso = $_POST["nome_curso"];
@@ -35,10 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql="INSERT into cursos(curso,descricao,preco,max_alunos,`data`,hora,nome_professor,categoria_curso,img_path,img_arq)
     VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $data . "','" . $hora . "','" . $professor  . "','" .  $categoria_curso  . "','" . $caminho_imagem . "','" . $imagem['name'] . "');"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
     $conn->query($sql); //escreve dentro do data_base
-    $sql="SELECT id FROM cursos WHERE curso='".$curso."';";
+    $sql="SELECT id FROM cursos WHERE `curso`='".$curso."';";
     $resultado = $conn->query($sql);
-    /*$exibir = $resultado->fetch_assoc(); EM DESENVOLVIMENTO
-    echo $exibir["id"];*/
+    $exibir = $resultado->fetch_assoc(); //EM DESENVOLVIMENTO
+    $sql="CREATE TABLE `" . $exibir["id"] . "`(
+    `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome` varchar(100) NOT NULL UNIQUE,
+    `email` varchar(255) NOT NULL,
+    `telefone` int NOT NULL
+    );";
+    $conn->query($sql);
     header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 }

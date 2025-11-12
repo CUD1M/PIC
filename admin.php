@@ -210,11 +210,11 @@
                                             <div>
                                                 <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
                                                 <div class="text-secondary small mb-3">
-                                                    <i class="bi bi-calendar-event"></i> --
+                                                    <i class="bi bi-calendar-event"></i> <?php echo $array[$i]['data'] . " às " . $array[$i]['hora']; ?>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mt-auto">
-                                                <span class="badge bg-light text-dark border">--</span>
+                                                <span class="badge bg-light text-dark border"><?php echo $array[$i]['categoria_curso']; ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@
                         <div class="row mt-4 g-4">
                     <?php
                     var_dump($array);
-                }
+                } else echo "<h5>NÃO HÁ CURSOS CADASTRADOS</h5>";
                 ?>
             </div>
 
@@ -312,39 +312,49 @@
     <div class="modal fade" id="modalExcluirCurso" tabindex="-1" aria-labelledby="modalExcluirCursoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+
+            <form action="delete_curso.php" method="POST"> <!-- Form excluir curso -->
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title" id="modalExcluirCursoLabel">Excluir Cursos</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
-            
             <div class="modal-body pt-0">
                 <p class="text-secondary mb-3">Selecione os cursos que deseja excluir</p>
-
                 <div class="list-group">
-                    
+                    <!-- Estrutura de cada curso para exclusão! -->
+                     <?php 
+                     if($response->num_rows>0){
+                        for($i=0;$i<$response->num_rows;$i++){
+                            $response->data_seek($i);
+                            $array2[]=$response->fetch_assoc();
+                     ?>
                     <label class="list-group-item d-flex align-items-center mb-2 border rounded p-3" style="cursor: pointer;">
                         <div class="form-check me-3 mt-0">
-                            <input class="form-check-input mt-0" type="checkbox" value="" id="cursoPizza" checked>
+                            <input class="form-check-input mt-0" type="checkbox" value="<?php echo $array2[$i]["id"] ?>" name="<?php echo $i ?>">
                         </div>
 
-                        <img src="pizza.jpg" class="img-fluid rounded me-3" alt="Curso de Pizza Italiana" style="width: 70px; height: 70px; object-fit: cover;">
+                        <img src="<?php echo $array2[$i]["img_arq"]; ?>" class="img-fluid rounded me-3" alt="Curso de Pizza Italiana" style="width: 70px; height: 70px; object-fit: cover;">
                         
                         <div class="flex-grow-1">
-                            <h6 class="mb-1 fw-bold">Curso de Pizza Italiana</h6>
-                            <p class="mb-0 small text-muted">Professor: Michele November</p>
-                            <p class="mb-0 small text-danger fw-bold">Preço: R$ 89.90</p>
+                            <h6 class="mb-1 fw-bold"><?php echo $array2[$i]["curso"]; ?></h6>
+                            <p class="mb-0 small text-muted"><?php echo $array2[$i]["nome_professor"]; ?></p>
+                            <p class="mb-0 small text-danger fw-bold">Preço: R$ <?php echo $array2[$i]["preco"]; ?></p>
                         </div>
                     </label>
-
-                    
+                    <?php 
+                        }
+                     } else echo "<p> Nenhum Curso Encontrado! </p>";
+                    ?>
+    
                 </div>
             </div>
             
+
             <div class="modal-footer d-block border-0 pt-0">
                 <button type="submit" class="btn text-white w-100 mb-2 py-2" style="background-color: #e85966; border-color: #e85966;">Excluir</button>
                 <button type="button" class="btn btn-light w-100 py-2" data-bs-dismiss="modal">Cancelar</button>
             </div>
-            
+            </form>
         </div>
     </div>
 </div>
