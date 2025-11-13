@@ -1,9 +1,20 @@
+<?php
+  if(!isset($_SESSION)){
+    session_start();
+  } 
+  $id = $_GET["id"];
+  include ("conexao.php");
+  $sql = "SELECT * FROM `cursos` WHERE id=$id";
+  $result = $conn->query($sql);
+  $info = $result->fetch_assoc();
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Curso de Pizza Italiana</title>
+  <title><?php echo "Curso " . $info['curso'];  ?></title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -113,12 +124,12 @@
     <div class="container">
       <div class="d-flex flex-column flex-md-row align-items-start gap-3">
         <div class="me-auto">
-          <a href="#" class="d-inline-flex align-items-center">
-            <i class="bi bi-arrow-left me-2"></i>Voltar aos cursos
+          <a href="http://localhost/PIC/P%c3%a1gina%20Inicial.php" class="d-inline-flex align-items-center"> <!-- Link Página Inicial -->
+            <i class="bi bi-arrow-left me-2">Voltar aos cursos</i>
           </a>
-          <div class="course-title">Curso de Pizza Italiana</div>
+          <div class="course-title"><?php echo $info['curso'] ?></div>
           <div class="mt-2">
-            <span class="badge-course">Pizza</span>
+            <span class="badge-course"><?php echo $info['categoria_curso'] ?></span>
           </div>
         </div>
       </div>
@@ -131,13 +142,13 @@
 
         <div class="col-lg-8">
 
-          <img src="pizza.jpg" alt="Pizza" class="main-img mb-4">
+          <img src="<?php echo $info['img_arq'] ?>" alt="Pizza" class="main-img mb-4">
 
           <div class="card card-plain mb-4 p-3">
             <div class="card-body p-3">
               <h5 class="mb-2">Sobre o Curso</h5>
               <p class="small-muted mb-3">
-                Aprenda a fazer pizzas italianas autênticas com massa artesanal e ingredientes selecionados.
+                <?php echo $info['descricao'] ?>
               </p>
 
               <div class="row text-muted small">
@@ -232,12 +243,12 @@
 
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="detail-label">Preço</div>
-                <div class="price-big">R$ 89.90</div>
+                <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
               </div>
 
               <div class="mb-3 small-muted">
                 <div class="mb-2"><i class="bi bi-person-fill me-2"></i><strong>Professor</strong><div class="small-muted">Michele November</div></div>
-                <div class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i><strong>Data e Horário</strong><div class="small-muted">15/10/2025 às 14:00</div></div>
+                <div class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i><strong>Data e Horário</strong><div class="small-muted"><?php echo $info["data"] . " às " . $info['hora'] ?></div></div>
                 <div class="mb-0"><i class="bi bi-people-fill me-2"></i><strong>Vagas</strong><div class="small-muted">15 disponíveis de 20</div></div>
               </div>
             </div>
@@ -250,7 +261,7 @@
 
               <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
                 <div class="small-muted">Total:</div>
-                <div class="price-big">R$ 89.90</div>
+                <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
               </div>
 
               <button class="btn btn-primary w-100 mb-2">Fazer Inscrição</button>

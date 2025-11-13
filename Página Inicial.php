@@ -142,7 +142,7 @@ include ("conexao.php");
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <span class="badge bg-light text-dark border"><?php echo $array[$i]['categoria_curso']?></span>
-                                    <button class="btn btn-danger">Inscreva-se</button>
+                                    <a href="http://localhost/PIC/Pagina%20de%20cada%20produto.php?id=<?php echo $array[$i]["id"]; ?>"><button class="btn btn-danger">Inscreva-se</button></a> <!-- Link para a pagina dinânima de cada produto -->
                                 </div>
                             </div>
                         </div>
