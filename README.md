@@ -6,14 +6,14 @@ Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
 ## LISTA A SE FAZER
 * Lengenda: ⚠️ Pendente - ⚙️ Sendo Feito - ✅ Concluido
 
- ⚠️ Ajustar funcionalidade de filtros index.php;
- ⚠️ Ajustar funcionalidade de filtros admin.php;
- ⚠️ Ajuste fino frontend curso.php;
- ⚠️ Ajuste fino frontend admin.php;
- ⚠️ Ajuste fino frontend login.php;
- ⚠️ Ajuste fino frontend index.php;
- ⚙️ backend curso.php (Rafael Benaia);
- ⚙️ Integração plataforma de pagamento AbacatePay (Rafael Benaia);
+ ⚠️ Ajustar funcionalidade de filtros index.php; <br>
+ ⚠️ Ajustar funcionalidade de filtros admin.php; <br>
+ ⚠️ Ajuste fino frontend curso.php; <br>
+ ⚠️ Ajuste fino frontend admin.php; <br>
+ ⚠️ Ajuste fino frontend login.php; <br>
+ ⚠️ Ajuste fino frontend index.php; <br>
+ ⚙️ backend curso.php (Rafael Benaia); <br>
+ ⚙️ Integração plataforma de pagamento AbacatePay (Rafael Benaia); <br>
 
 
 ## 🪟 INICIALIZAÇÃO DO SITE
