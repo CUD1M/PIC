@@ -3,7 +3,7 @@
         session_start();
     }
     if($_SESSION["id"]!=1){
-        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='Página Inicial.php';</script>";
+        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='index.php';</script>";
     } else { 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -17,7 +17,7 @@
     $hora = $_POST["hora"];
     $professor = $_POST["nome_professor"];
     $categoria_curso = $_POST["categoria_curso"];
-    $repertorio = "C:\\\\xampp\\\\htdocs\\\\PIC\\\\"; //Aqui vai o caminho do seu repertório
+    $repertorio = "C:\\\\xampp\\\\htdocs\\\\PIC\\\\images\\\\cursos\\\\"; //Aqui vai o caminho do seu repertório
     $caminho_imagem = $repertorio . $imagem['name'];
     
     
@@ -30,7 +30,7 @@
             die("<script>alert('ERRO AO SALVAR A IMAGEM!'); window.location.href='admin.php';</script>"); //erro ao salvar imagem
         }
     }
-    include("conexao.php"); //conexão ao banco de dados
+    include("include\conexao.php"); //conexão ao banco de dados
     $sql="INSERT into cursos(curso,descricao,preco,max_alunos,`data`,hora,nome_professor,categoria_curso,img_path,img_arq)
     VALUES ('" . $curso . "','" .$descricao. "'," . $preco . "," . $max_alunos . ",'" . $data . "','" . $hora . "','" . $professor  . "','" .  $categoria_curso  . "','" . $caminho_imagem . "','" . $imagem['name'] . "');"; //PREPARAÇÃO DA INSCRIÇÃO DO CURSO
     $conn->query($sql); //escreve dentro do data_base

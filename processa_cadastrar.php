@@ -1,5 +1,5 @@
 <?php
-include("conexao.php");
+include("include\conexao.php");
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Executa a inserção e verifica se foi bem-sucedida
     if ($stmt->execute()) {
-        echo "<script>alert('Cadastro realizado com sucesso!'); window.location.href='Chave de acesso.html';</script>";
+        echo "<script>alert('Cadastro realizado com sucesso!'); window.location.href='index.php';</script>";
     } else {
-        echo "<script>alert('Erro ao cadastrar: " . $stmt->error . "'); window.location.href='Chave de acesso.html';</script>";
+        echo "<script>alert('Erro ao cadastrar: " . $stmt->error . "'); window.location.href='login.php';</script>";
     }
 
     $stmt->close();

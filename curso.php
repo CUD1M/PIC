@@ -3,7 +3,7 @@
     session_start();
   } 
   $id = $_GET["id"];
-  include ("conexao.php");
+  include ("include\conexao.php");
   $sql = "SELECT * FROM `cursos` WHERE id=$id";
   $result = $conn->query($sql);
   $info = $result->fetch_assoc();
@@ -124,7 +124,7 @@
     <div class="container">
       <div class="d-flex flex-column flex-md-row align-items-start gap-3">
         <div class="me-auto">
-          <a href="http://localhost/PIC/P%c3%a1gina%20Inicial.php" class="d-inline-flex align-items-center"> <!-- Link Página Inicial -->
+          <a href="http://localhost/PIC/index.php" class="d-inline-flex align-items-center"> <!-- Link Página Inicial -->
             <i class="bi bi-arrow-left me-2">Voltar aos cursos</i>
           </a>
           <div class="course-title"><?php echo $info['curso'] ?></div>
@@ -142,7 +142,7 @@
 
         <div class="col-lg-8">
 
-          <img src="<?php echo $info['img_arq'] ?>" alt="Pizza" class="main-img mb-4">
+          <img src="<?php echo "images\\cursos\\" . $info['img_arq'] ?>" alt="Pizza" class="main-img mb-4">
 
           <div class="card card-plain mb-4 p-3">
             <div class="card-body p-3">

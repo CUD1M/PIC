@@ -3,9 +3,9 @@
         session_start();
     }
     if($_SESSION["id"]!=1){
-        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='Página Inicial.php';</script>";
+        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='index.php';</script>";
     } else { 
-    include ("conexao.php");
+    include ("include\conexao.php");
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 
     <nav class="nav navbar navbar-light bg-white shadow-sm px-3">
         <a class="navbar-brand fw-bold" href="#">Academia Culinária</a>
-        <a href="Página Inicial.php"><button class="btn btn-outline-secondary">Sair</button></a>
+        <a href="index.php"><button class="btn btn-outline-secondary">Sair</button></a>
     </nav>
 
     <div class="d-flex">
@@ -205,7 +205,7 @@
                             ?>
                                 <div class="col-lg-3 col-md-6">
                                     <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
-                                        <img src="<?php echo $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;"> <!--Cominho da imagem-->
+                                        <img src="<?php echo "images\\cursos\\" . $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;"> <!--Cominho da imagem-->
                                         <div class="card-body d-flex flex-column">
                                             <div>
                                                 <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
@@ -224,7 +224,6 @@
                     ?>
                         <div class="row mt-4 g-4">
                     <?php
-                    var_dump($array);
                 } else echo "<h5>NÃO HÁ CURSOS CADASTRADOS</h5>";
                 ?>
             </div>
@@ -333,7 +332,7 @@
                             <input class="form-check-input mt-0" type="checkbox" value="<?php echo $array2[$i]["id"] ?>" name="<?php echo $i ?>">
                         </div>
 
-                        <img src="<?php echo $array2[$i]["img_arq"]; ?>" class="img-fluid rounded me-3" alt="Curso de Pizza Italiana" style="width: 70px; height: 70px; object-fit: cover;">
+                        <img src="<?php echo "images\\cursos\\" . $array2[$i]["img_arq"]; ?>" class="img-fluid rounded me-3" alt="Curso de Pizza Italiana" style="width: 70px; height: 70px; object-fit: cover;">
                         
                         <div class="flex-grow-1">
                             <h6 class="mb-1 fw-bold"><?php echo $array2[$i]["curso"]; ?></h6>
@@ -360,7 +359,7 @@
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script/script_admin.js"> </script>
+    <script src="js/script_admin.js"> </script>
 </body>
 </html>
 

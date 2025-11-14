@@ -44,7 +44,7 @@
 <div class="container-fluid p-0">
   <div class="row g-0 full-vh">
     <div class="col-5 d-flex flex-column align-items-center justify-content-start left-side py-3">
-      <a href="Página Inicial.php"><img class="mb-3"src="logo.png" alt="LOGO"></a>
+      <a href="index.php"><img class="mb-3"src="images\logo.png" alt="LOGO"></a>
       <div class="d-flex w-100 px-3 mb-3">
         <button id="btn-cadastrar" class="botao btn btn-outline-light flex-fill fw-bold me-2">Cadastrar-se</button>
         <button id="btn-login" class="botao btn btn-light flex-fill fw-bold ms-2">Fazer Login</button>
@@ -52,7 +52,7 @@
       <!-- Div Login (Chamado pelo javascript)-->
       <div id="login-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
-          <img src="cadeado.png" alt="Chave de Acesso" width="50">
+          <img src="images\cadeado.png" alt="Chave de Acesso" width="50">
           <h3 class="mt-2 fw-bold">Fazer Login</h3>
         </div>
 
@@ -74,7 +74,7 @@
      <!-- Div Cadastro (Chamado pelo javascript) -->
      <div id="cadastrar-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
-          <img src="cadeado.png" alt="Chave de Acesso" width="50">
+          <img src="images\cadeado.png" alt="Chave de Acesso" width="50">
           <h3 class="mt-2 fw-bold">Cadastrar-se</h3>
         </div>
 
@@ -82,7 +82,7 @@
           <div class="alert alert-danger"><?php echo $erro; ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="cadastrar.php">
+        <form method="POST" action="processa_cadastrar.php">
         <input type="hidden" name="tipo_form" value="cadastro">
         <div class="mb-3"><!-- Campo de preenchimento do nome -->
             <input type="nome" class="form-control" name="nome" placeholder="nome" required>
@@ -115,6 +115,6 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>

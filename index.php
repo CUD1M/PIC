@@ -2,7 +2,7 @@
 if(!isset($_SESSION)){
   session_start();
 }
-include ("conexao.php");
+include ("include\conexao.php");
 ?>
 
 
@@ -38,7 +38,7 @@ include ("conexao.php");
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="logo.png" alt="Decoração" class="decorative mt-3">
+          <img src="images\logo.png" alt="Decoração" class="decorative mt-3">
         </div>
         <div class="col-md-6">
           <?php 
@@ -52,7 +52,7 @@ include ("conexao.php");
           <?php 
             } else {
           ?>
-          <a href="Chave de acesso.PHP" class="botão text-decoration-none">Login</a> <!--Redireciona para a página de cadastro-->
+          <a href="login.php" class="botão text-decoration-none">Login</a> <!--Redireciona para a página de cadastro-->
           <?php
             }
         ?>
@@ -132,7 +132,7 @@ include ("conexao.php");
                 ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
-                            <img src="<?php echo $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
+                            <img src="<?php echo "images\\cursos\\" . $array[$i]['img_arq']; ?>" class="card-img-top" style="border-radius:12px 12px 0 0; height: 250px; object-fit: cover;">
                             <div class="card-body d-flex flex-column">
                                 <div>
                                     <h5 class="fw-bold"><?php echo $array[$i]['curso'] ?></h5>
@@ -142,7 +142,7 @@ include ("conexao.php");
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <span class="badge bg-light text-dark border"><?php echo $array[$i]['categoria_curso']?></span>
-                                    <a href="http://localhost/PIC/Pagina%20de%20cada%20produto.php?id=<?php echo $array[$i]["id"]; ?>"><button class="btn btn-danger">Inscreva-se</button></a> <!-- Link para a pagina dinânima de cada produto -->
+                                    <a href="http://localhost/PIC/curso.php?id=<?php echo $array[$i]["id"]; ?>"><button class="btn btn-danger">Inscreva-se</button></a> <!-- Link para a pagina dinânima de cada produto -->
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ include ("conexao.php");
 
   <!-- BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>

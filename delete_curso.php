@@ -4,9 +4,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         session_start();
     }
     if($_SESSION["id"]!=1){
-        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='Página Inicial.php';</script>";
+        echo "<script>alert('VOCE NÃO É ADMIN!'); window.location.href='index.php';</script>";
     } else {
-        include ("conexao.php");
+        include ("include\conexao.php");
         foreach($_POST as $id){
             $response = $conn->query("SELECT `img_path` FROM `cursos` WHERE id=$id");
             $img = $response->fetch_assoc();

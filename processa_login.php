@@ -1,6 +1,6 @@
 <?php
 
-include("conexao.php");
+include("include\conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']); //comando usado para ignorar caracteres com funções SQL
@@ -27,15 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["nome"] = $usuario["nome"];
 
             // Mensagem de boas-vindas
-            header("Location: Página Inicial.php");
+            header("Location: index.php");
 
         } else {
             // Senha incorreta
-            echo "<script>alert('Senha incorreta!'); window.location.href='Chave de acesso.php';</script>";
+            echo "<script>alert('Senha incorreta!'); window.location.href='login.php';</script>";
         }
     } else {
         // Email não encontrado
-        echo "<script>alert('E-mail não encontrado!'); window.location.href='Chave de acesso.php';</script>";
+        echo "<script>alert('E-mail não encontrado!'); window.location.href='login.php';</script>";
     }
 
     $stmt->close();
