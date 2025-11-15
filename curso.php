@@ -163,8 +163,8 @@
                 <div class="col-12 col-md-6 d-flex align-items-start mb-2 info-row">
                   <i class="bi bi-clock-fill me-2 mt-1"></i>
                   <div>
-                    <div class="fw-bold">Duração</div>
-                    <div class="small-muted">4 horas práticas</div>
+                    <div class="fw-bold"></div>
+                    <div class="small-muted"></div>
                   </div>
                 </div>
               </div>
@@ -180,12 +180,12 @@
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="faqHeading1">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                      Qual é a duração do curso?
+                      Como é a experiência da degustação?
                     </button>
                   </h2>
                   <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                      O curso tem 4 horas de duração, com prática na preparação da massa, montagem e cocção das pizzas.
+                      A degustação é feita em conjunto ao final da aula com direito a vinho.
                     </div>
                   </div>
                 </div>
@@ -211,7 +211,7 @@
                   </h2>
                   <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                      Ingredientes, receitas impressas, e a degustação das pizzas feitas durante a aula.
+                      Ingredientes, utensílios, vestimentas e equipamentos utilizados conforme a receita.
                     </div>
                   </div>
                 </div>
@@ -247,7 +247,7 @@
               </div>
 
               <div class="mb-3 small-muted">
-                <div class="mb-2"><i class="bi bi-person-fill me-2"></i><strong>Professor</strong><div class="small-muted">Michele November</div></div>
+                <div class="mb-2"><i class="bi bi-person-fill me-2"></i><strong>Professor</strong><div class="small-muted"><?php echo $info["nome_professor"]?></div></div>
                 <div class="mb-2"><i class="bi bi-calendar-event-fill me-2"></i><strong>Data e Horário</strong><div class="small-muted"><?php echo $info["data"] . " às " . $info['hora'] ?></div></div>
                 <div class="mb-0"><i class="bi bi-people-fill me-2"></i><strong>Vagas</strong><div class="small-muted">15 disponíveis de 20</div></div>
               </div>
