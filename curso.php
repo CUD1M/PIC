@@ -224,7 +224,7 @@
                   </h2>
                   <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                      A escola fica na Rua José Ferraz de Camargo, 555, no centro de Piracicaba/SP.
+                      A escola fica na Rua José Ferraz de Camargo, 555, no centro de Piracicaba/SP. 
                     </div>
                   </div>
                 </div>
