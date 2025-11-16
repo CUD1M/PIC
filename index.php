@@ -155,6 +155,22 @@ include ("include\conexao.php");
         }
     ?>
   </div>
+<a href="https://wa.me/+5519997380163"
+   class="btn btn-success d-flex align-items-center justify-content-center shadow"
+   target="_blank"
+   style="
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1030;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      padding: 0;
+   ">
+   <i class="bi bi-whatsapp" style="font-size: 26px;"></i>
+</a>
+
 
   <!-- BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

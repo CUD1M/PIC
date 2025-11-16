@@ -270,7 +270,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Número Máximo de Alunos  <span style="color:red">*</span></label>
-                                <input type="number" class="form-control" name="max_alunos" requiered>
+                                <input type="number" class="form-control" min="1" name="max_alunos" requiered>
                             </div>
                         </div>
                         <div class="row">
@@ -286,9 +286,7 @@
                             <label class="form-label">Professores <span style="color:red">*</span></label>
                             <select class="form-control" name="nome_professor" required>
                                 <option value="" disabled selected hidden>Escolha o professor</option>
-                                <option value="option1">Nome 1</option>
-                                <option value="option2">Nome 2</option>
-                                <option value="option3">Nome 3</option>
+                                <option value="option1">Michele Novembre</option>
                             </select>
                         </div>
                         <div class="mb-3">

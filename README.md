@@ -12,8 +12,10 @@ Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
     ⚠️ Ajuste fino frontend admin.php; <br>
     ⚠️ Ajuste fino frontend login.php; <br>
     ⚠️ Ajuste fino frontend index.php; <br>
+    ⚠️ Inserir preenchimento de termos no cadastro; <br>
     ⚙️ backend curso.php (Rafael Benaia); <br>
     ⚙️ Integração plataforma de pagamento AbacatePay (Rafael Benaia); <br>
+
 
 
 ## 🪟 INICIALIZAÇÃO DO SITE

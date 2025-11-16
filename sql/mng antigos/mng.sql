@@ -1,0 +1,64 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 11/11/2025 às 18:38
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `mng`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `cursos`
+--
+
+CREATE TABLE `cursos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `curso` varchar(100) NOT NULL UNIQUE,
+  `descricao` text NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `data` date NOT NULL,
+  `hora` time NOT NULL,
+  `max_alunos` int(11) NOT NULL,
+  `nome_professor` varchar(100) NOT NULL,
+  `categoria_curso` varchar(100) NOT NULL,
+  `img_path` text NOT NULL,
+  `img_arq` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `cpf` varchar(14) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Criando o Usuário Admin
+--
+
+INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `telefone`, `cpf`) VALUES
+(1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000');

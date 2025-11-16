@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/11/2025 às 18:38
+-- Tempo de geração: 15/11/2025 às 02:15
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.1.25
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cursos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `curso` varchar(100) NOT NULL UNIQUE,
+  `id` int(11) NOT NULL,
+  `curso` varchar(100) NOT NULL,
   `descricao` text NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `data` date NOT NULL,
@@ -38,8 +38,17 @@ CREATE TABLE `cursos` (
   `nome_professor` varchar(100) NOT NULL,
   `categoria_curso` varchar(100) NOT NULL,
   `img_path` text NOT NULL,
-  `img_arq` text NOT NULL
+  `img_arq` text NOT NULL,
+  `status` varchar(20) DEFAULT 'ABERTO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cursos`
+--
+
+INSERT INTO `cursos` (`id`, `curso`, `descricao`, `preco`, `data`, `hora`, `max_alunos`, `nome_professor`, `categoria_curso`, `img_path`, `img_arq`, `status`) VALUES
+(6, 'sad', 'sad', 212.00, '2025-11-07', '00:18:00', 123, 'option2', 'asd', 'C:\\xampp\\htdocs\\PIC\\images\\cursos\\cursos de massas.png', 'cursos de massas.png', 'fechado'),
+(7, 'joao', 'macaco', 215.00, '2025-11-09', '01:20:00', 8, 'option2', 'familia', 'C:\\xampp\\htdocs\\PIC\\images\\cursos\\pizza.jpg', 'pizza.jpg', 'fechado');
 
 -- --------------------------------------------------------
 
@@ -48,7 +57,7 @@ CREATE TABLE `cursos` (
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -57,8 +66,57 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Criando o Usuário Admin
+-- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `telefone`, `cpf`) VALUES
 (1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `curso` (`curso`);
+
+--
+-- Índices de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `ALTERAR STATUS` ON SCHEDULE EVERY '0:1' HOUR_MINUTE STARTS '2025-11-15 01:17:35' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE cursos
+SET status = 'fechado'
+WHERE TIMESTAMP(data, hora) < NOW()
+  AND status = 'aberto'$$
+
+DELIMITER ;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
