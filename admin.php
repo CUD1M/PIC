@@ -222,9 +222,9 @@
                             <?php
                         }
                     ?>
-                        <div class="row mt-4 g-4">
+                        </div>
                     <?php
-                } else echo "<h5>NÃO HÁ CURSOS CADASTRADOS</h5>";
+                } else echo "<p>NÃO HÁ CURSOS CADASTRADOS</p>";
                 ?>
             </div>
 
