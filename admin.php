@@ -244,7 +244,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form id="formAdicionarCurso" class="row g-3" action="forms_curso.php" method="POST" enctype="multipart/form-data">
+                <form id="formAdicionarCurso" class="row g-3" action="processa_curso.php" method="POST" enctype="multipart/form-data">
                     <div class="col-md-4 d-flex justify-content-center align-items-center flex-column">
                         <div class="border rounded p-4 text-center" style="width: 100%; height: 250px; background-color: #f5f5f5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <i class="bi bi-cloud-upload-fill text-muted" style="font-size: 50px;"></i>
