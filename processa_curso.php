@@ -38,10 +38,10 @@
     $resultado = $conn->query($sql);
     $exibir = $resultado->fetch_assoc(); //EM DESENVOLVIMENTO
     $sql="CREATE TABLE `" . $exibir["id"] . "`(
-    `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id` int NOT NULL PRIMARY KEY,
     `nome` varchar(100) NOT NULL UNIQUE,
     `email` varchar(255) NOT NULL,
-    `telefone` int NOT NULL
+    `telefone` varchar(20) NOT NULL
     );";
     $conn->query($sql);
     header("Location: " . $_SERVER['HTTP_REFERER']);
