@@ -229,15 +229,55 @@
             </div>
 
             <div id="alunos" class="tab-content" style="display:none;">
-                <h4>Alunos</h4>
-                <p>Aqui você pode colocar informações detalhadas sobre os alunos.</p>
+                <h4 class="mb-4">Alunos</h4>
+            <!-- INICIO DA TABELA -->
+             <?php
+             $curso_sql = $conn->query("SELECT id, curso FROM `cursos`");
+                if($curso_sql->num_rows>0){ //verifica se há cursos cadastrados
+                    while($info1 = $curso_sql->fetch_assoc()){ //laço de repetição para tabela do curso
+                    ?><h5 class="mb-3">Curso <?php echo $info1['curso'];?> </h5><?php 
+                    $alunos_array = $conn->query("SELECT * FROM `".$info1['id']."`");
+                    if($alunos_array->num_rows>0){
+                        $num=0;
+                        ?> 
+                        <table class="table table-light">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Número</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                            while($info2 = $alunos_array->fetch_assoc()){ //laço de repetição para informações dos alunos
+                                $num++;
+                        ?>
+                            <tr >
+                            <th scope="row"><?php echo $num; ?></th>
+                            <td><?php echo $info2['nome']; ?></td>
+                            <td><?php echo $info2['email']; ?></td>
+                            <td><?php echo $info2['telefone']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                    } else echo "<p>Nenhum aluno inscrito!</p>";
+                    ?>
+                    </tbody>
+                </table>
+            <?php
+                    } 
+                } else echo "<p>Nenhum curso encontrado!</p>";
+             ?>
+
             </div>
 
         </div>
     </div>
 
     <div class="modal fade" id="modalAddCurso" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Adicionar Novo Curso</h5>
@@ -246,11 +286,10 @@
             <div class="modal-body">
                 <form id="formAdicionarCurso" class="row g-3" action="processa_curso.php" method="POST" enctype="multipart/form-data">
                     <div class="col-md-4 d-flex justify-content-center align-items-center flex-column">
-                        <div class="border rounded p-4 text-center" style="width: 100%; height: 250px; background-color: #f5f5f5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="border rounded p-4 text-center" style="width: 100%; height: 100%; background-color: #f5f5f5; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <i class="bi bi-cloud-upload-fill text-muted" style="font-size: 50px;"></i>
                             <p class="text-muted">Arraste ou cole a foto aqui</p>
-                            <label for="imageUpload" class="btn btn-sm btn-outline-secondary mt-2">Selecionar Arquivo</label>
-                            <input type="file" id="imageUpload" class="form-control d-none" name="foto_curso" accept=".png, .jpg, .jpeg" required>
+                            <input type="file" id="formFileSm" class="form-control form-control-sm" name="foto_curso" accept=".png, .jpg, .jpeg" required>
                         </div>
                     </div>
                 
@@ -286,7 +325,7 @@
                             <label class="form-label">Professores <span style="color:red">*</span></label>
                             <select class="form-control" name="nome_professor" required>
                                 <option value="" disabled selected hidden>Escolha o professor</option>
-                                <option value="option1">Michele Novembre</option>
+                                <option value="Michele Novembre">Michele Novembre</option>
                             </select>
                         </div>
                         <div class="mb-3">
