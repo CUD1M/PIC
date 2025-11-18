@@ -37,7 +37,17 @@
         background: #7c1d03ff; 
         box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra */
         transition: all 0.3s ease; /* fica branco quando passa o mouse*/
+    
     }
+    .btn-desativado {
+    background-color: #ccc !important; /* Garante a cor cinza */
+    background-image: none !important; /* REMOVE o gradiente da classe .hero */
+    color: #777 !important;
+    cursor: not-allowed;
+    border: none;
+    box-shadow: non
+    }
+
   </style>
 </head>
 <body>
@@ -62,16 +72,16 @@
 
         <form method="POST" action="processa_login.php">
           <input type="hidden" name="tipo_form" value="login">
-          <div class="mb-3"><!-- Campo de preenchimento do email -->
+          <div class="mb-3">
             <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
           </div>
-          <div class="mb-3"><!-- Campo de preenchimento do senha -->
+          <div class="mb-3">
             <input type="password" class="form-control" name="senha" placeholder="Senha" required>
           </div>
           <button type="submit" class="hero btn w-100 py-2 fw-bold">Entrar</button>
         </form>
       </div>
-     <!-- Div Cadastro (Chamado pelo javascript) -->
+     
      <div id="cadastrar-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
           <img src="images\cadeado.png" alt="Chave de Acesso" width="50">
@@ -84,37 +94,46 @@
 
         <form method="POST" action="processa_cadastrar.php">
         <input type="hidden" name="tipo_form" value="cadastro">
-        <div class="mb-3"><!-- Campo de preenchimento do nome -->
+        <div class="mb-3">
             <input type="nome" class="form-control" name="nome" placeholder="nome" required>
           </div>
-        <div class="mb-3"><!-- Campo de preenchimento do celular -->
+        <div class="mb-3">
             <input type="text" class="form-control" name="cell" placeholder="Telefone" required maxlength="11" pattern="[0-9]+" title="Digite apenas números"> <!--O "pattern" permite somente numeros de 0 a 9 impedindo de colocar caracteres-->
           </div>     
-        <div class="mb-3"><!-- Campo de preenchimento do cpf -->
-            <input type="cpf" class="form-control" name="cpf" placeholder="cpf" required>
+        <div class="mb-3">
+            <input type="cpf" class="form-control" name="cpf" placeholder="cpf" >
           </div>
-        <div class="mb-3"><!-- Campo de preenchimento do email -->
+        <div class="mb-3">
             <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
           </div>
-          <div class="mb-3"><!-- Campo de preenchimento do senha -->
+          <div class="mb-3">
             <input type="password" class="form-control" name="senha" placeholder="Senha" required>
           </div>
-          <button type="submit" class="hero btn w-100 py-2 fw-bold">Entrar</button>
+          <div class="form-check mb-3">
+          <input id="aceitoTermos" class="form-check-input" type="checkbox" required>
+          <label for="aceitoTermos" class="form-check-label">
+          Ao confirmar este checkbox, declaro que 
+          <a href="termo_consentimento_michele_novembre.pdf" target="_blank" style="color: blue; text-decoration: underline;">
+          li e aceito os termos
+          </a>
+          </label>
+          </div>
+          <button type="submit" class="hero btn w-100 py-2 fw-bold btn-desativado" id="btnEntrar" disabled>Entrar</button>
         </form>
       </div>
     </div>
     </div>
-    <!-- Lado direito -->
+    
     <div class="col-6 bg-light">
-      <!-- Espaço vazio -->
+     
     </div>
   </div>
 </div>
 
-<!-- JS para alternar formulário -->
 
-<!-- Bootstrap JS -->
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="js/scripts.js?v=2"></script>
 </body>
 </html>
