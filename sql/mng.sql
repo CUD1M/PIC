@@ -43,16 +43,6 @@ CREATE TABLE `cursos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `cursos`
---
-
-INSERT INTO `cursos` (`id`, `curso`, `descricao`, `preco`, `data`, `hora`, `max_alunos`, `nome_professor`, `categoria_curso`, `img_path`, `img_arq`, `status`) VALUES
-(6, 'sad', 'sad', 212.00, '2025-11-07', '00:18:00', 123, 'option2', 'asd', 'C:\\xampp\\htdocs\\PIC\\images\\cursos\\cursos de massas.png', 'cursos de massas.png', 'fechado'),
-(7, 'joao', 'macaco', 215.00, '2025-11-09', '01:20:00', 8, 'option2', 'familia', 'C:\\xampp\\htdocs\\PIC\\images\\cursos\\pizza.jpg', 'pizza.jpg', 'fechado');
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `usuario`
 --
 
@@ -62,15 +52,16 @@ CREATE TABLE `usuario` (
   `senha` varchar(255) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `telefone` varchar(20) NOT NULL,
-  `cpf` varchar(14) NOT NULL
+  `cpf` varchar(14) NOT NULL,
+  `id_banco` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `telefone`, `cpf`) VALUES
-(1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000');
+INSERT INTO `usuario` (`id`, `email`, `senha`, `nome`, `telefone`, `cpf`,`id_banco`) VALUES
+(1, 'admin@gmail.com', '$2y$10$NAWtcpeocT3vEWCCgRmoyeLrbIj1UyXYZngj/GsCR3ze3VEE7Jriq', 'ADM', '00000000', '00000000','0');
 
 --
 -- Índices para tabelas despejadas

@@ -25,6 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $_SESSION["id"] = $usuario["id"];
             $_SESSION["nome"] = $usuario["nome"];
+            $_SESSION["email"] = $usuario["email"];
+            $_SESSION["cpf"] = $usuario["cpf"];
+            $_SESSION["telefone"] = $usuario["telefone"];
+            $_SESSION["id_banco"] = $usuario["id_banco"];
 
             // Mensagem de boas-vindas
             header("Location: index.php");

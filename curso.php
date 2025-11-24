@@ -224,7 +224,7 @@
                   </h2>
                   <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
                     <div class="accordion-body">
-                      A escola fica na Rua José Ferraz de Camargo, 555, no centro de Piracicaba/SP.
+                      A escola fica na Rua José Ferraz de Camargo, 555, no centro de Piracicaba/SP. 
                     </div>
                   </div>
                 </div>
@@ -264,9 +264,9 @@
                 <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
               </div>
 
-              <button class="btn btn-primary w-100 mb-2">Fazer Inscrição</button>
+              <a href="http://localhost/PIC/processa_pagamento.php?id=<?php echo $_GET["id"] ?>"><button class="btn btn-primary w-100 mb-2">Fazer Inscrição</button></a>
 
-              <button class="btn btn-outline-secondary w-100"><i class="bi bi-chat-dots me-2"></i>Entrar em contato</button>
+              <a href="https://wa.me/+5519997380163"><button class="btn btn-outline-secondary w-100"><i class="bi bi-chat-dots me-2"></i>Entrar em contato</button></a> <!-- Processa Pagamento -->
             </div>
           </div>
 

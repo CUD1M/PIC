@@ -28,6 +28,12 @@ Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
 * **Após criar o banco de dados** importe o **arquivo "mng.slq"** dentro da **pasta "sql"** para XAMPP;
 * A conta do Admin é **email: admin@gmail.com** e a **senha: admin**.
 
+### NGROK (NECESSÁRIO PARA O FUNCIONAMENTO DO WEBHOOK)
+* Faça o download do **ngrok** no link: https://apps.microsoft.com/detail/9MVS1J51GMK6?hl=neutral&gl=BR&ocid=pdpshare
+* Abra o aplicativo e coloque os seguintes códigos:
+> **ngrok config add-authtoken** 35c6Pypt04T7kQowXrdZrGDIrhP_tAJCpmsAM5MQnQczQQPa <br>
+> **ngrok http 80**
+
 ## 👾 GITHUB
 
 ### CODIGOS GIT OBRIGATÓRIOS PARA A MODIFICAÇÃO DO REPOSITÓRIO
