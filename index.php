@@ -13,7 +13,7 @@ include ("include\conexao.php");
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Academia Gastronomica — Layout</title>
 
-  <!-- Bootstrap CSS -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
@@ -33,7 +33,7 @@ include ("include\conexao.php");
 
 <body>
 
-  <!-- HERO -->
+
   <section class="hero">
     <div class="container">
       <div class="row">
@@ -41,21 +41,27 @@ include ("include\conexao.php");
           <img src="images\logo.png" alt="Decoração" class="decorative mt-3">
         </div>
         <div class="col-md-6">
-          <?php 
-            if(isset($_SESSION["id"])){
-          ?>
-              <div class="user-info">
-                <span><?php echo htmlspecialchars($_SESSION["nome"]); ?></span>
-                <?php if($_SESSION["id"]==1){ ?> <a href="admin.php"><button>Admin</button></a><?php } ?>
-                <a href="logout.php"><button>Logout</button></a>
-              </div>
-          <?php 
-            } else {
-          ?>
-          <a href="login.php" class="botão text-decoration-none">Login</a> <!--Redireciona para a página de cadastro-->
-          <?php
-            }
-        ?>
+         <?php 
+    if(isset($_SESSION["id"])){
+    ?>
+    <div class="user-info">
+        <span><?php echo htmlspecialchars($_SESSION["nome"]); ?></span>
+
+        <?php if($_SESSION["id"]==1){ ?> 
+            <a href="admin.php"><button>Admin</button></a>
+            <a href="meus_cursos.php"><button>Meus Cursos</button></a>
+        <?php } else { ?>
+            <a href="meus_cursos.php"><button>Meus Cursos</button></a>
+        <?php } ?>
+
+        <a href="logout.php"><button>Logout</button></a>
+      </div>
+    <?php 
+    } else { ?>
+    <a href="login.php" class="botão text-decoration-none">Login</a>
+<?php
+    }
+?>
       </div>
     </div>
       <h1>Academia Gastronomica</h1>
@@ -69,64 +75,20 @@ include ("include\conexao.php");
   </section>
 
 
-  <!-- CONTAINER PRINCIPAL (MENU + FILTROS + CARDS) -->
+ 
   <div class="container my-4">
 
-    <!-- FILTROS (menu) -->
-    <div class="p-4 border rounded shadow-sm bg-light">
-      <h5 class="mb-3">Filtros</h5>
-
-      <!-- PERÍODO -->
-      <div class="mb-4">
-        <label class="form-label fw-bold">Período</label>
-        <div class="d-flex gap-2 flex-wrap">
-
-          <button class="btn btn-outline-secondary filtro-periodo">Esta Semana</button>
-          <button class="btn btn-outline-secondary filtro-periodo">Este Mês</button>
-          <button class="btn btn-outline-secondary filtro-periodo">Todos</button>
-
-          <div class="input-group w-50">
-            <input type="date" class="form-control" id="dataInicio">
-            <input type="date" class="form-control" id="dataFim">
-            <button class="btn btn-primary px-4" id="aplicarFiltro">Aplicar</button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ICONES -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-      <!-- TIPOS DE CULINÁRIA -->
-      <strong>Tipos de Culinária</strong>
-      <div class="mt-2 d-flex gap-2 flex-wrap">
-        <?php
-        $sql = "SELECT DISTINCT categoria_curso FROM cursos ORDER BY categoria_curso ASC";
-        $categorias = $conn->query($sql);
-
-        if($categorias->num_rows > 0) {
-          while ($cat = $categorias->fetch_assoc()){
-            $nome = htmlspecialchars($cat['categoria_curso']);
-            echo '<button class="btn btn-outline-secondary filtro">' . $nome . '</button>';
-          
-          }
-        } else {
-           echo '<span class="text-muted">Nenhuma categoria cadastrada</span>';
-        }
-        ?>
-      </div>
-    </div>
-    <!-- CARDS DOS CURSOS -->  
+    
     <?php      
         $response = $conn->query(
             "SELECT* FROM cursos"
         );
-        if($response->num_rows>0){ //Verifica se existe algum curso cadastrado
+        if($response->num_rows>0){ 
             ?>
                 <div class="row mt-4 g-4">
             <?php
 
-            for($i=0;$i<$response->num_rows;$i++){ //laço da repetição para exibição dos cursos
+            for($i=0;$i<$response->num_rows;$i++){ 
                 $response->data_seek($i);
                 $array[]=$response->fetch_assoc();
                 ?>
@@ -172,7 +134,7 @@ include ("include\conexao.php");
 </a>
 
 
-  <!-- BOOTSTRAP JS -->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
 

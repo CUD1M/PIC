@@ -171,7 +171,7 @@
             </div>
           </div>
 
-          <!-- Perguntas Frequentes -->
+          
           <div class="card card-plain p-3">
             <div class="card-body p-0">
               <h5 class="mb-3">Perguntas Frequentes</h5>
@@ -234,9 +234,9 @@
           </div>
         </div>
 
-        <!-- Right column (sidebar) -->
+       
         <div class="col-lg-4">
-          <!-- Detalhes do Curso -->
+          
           <div class="card mb-3 card-plain p-3">
             <div class="card-body">
               <h6 class="mb-3">Detalhes do Curso</h6>
@@ -254,20 +254,57 @@
             </div>
           </div>
 
-          <!-- Inscrição -->
+         
           <div class="card register-card card-plain p-3">
-            <div class="card-body">
-              <h6 class="mb-3">Inscrição</h6>
+    <div class="card-body">
+        <h6 class="mb-3">Inscrição</h6>
 
-              <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
-                <div class="small-muted">Total:</div>
-                <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
-              </div>
+        <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
+            <div class="small-muted">Total:</div>
+            <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
+        </div>
 
-              <a href="http://localhost/PIC/processa_pagamento.php?id=<?php echo $_GET["id"] ?>"><button class="btn btn-primary w-100 mb-2">Fazer Inscrição</button></a>
+        <div class="form-check mb-3">
+            <input id="aceitoTermos" class="form-check-input" type="checkbox" required>
+            <label for="aceitoTermos" class="form-check-label">
+                Estou ciente de que o curso pode ser cancelado se não atingir alunos mínimos, com reembolso.
+            </label>
+        </div>
 
-              <a href="https://wa.me/+5519997380163"><button class="btn btn-outline-secondary w-100"><i class="bi bi-chat-dots me-2"></i>Entrar em contato</button></a> <!-- Processa Pagamento -->
-            </div>
+        <a id="linkInscricao" href="http://localhost/PIC/processa_pagamento.php?id=<?php echo $_GET['id']; ?>">
+            <button id="btnInscricao" class="btn btn-primary w-100 mb-2" disabled>Fazer Inscrição</button>
+        </a>
+
+        <a href="https://wa.me/+5519997380163">
+            <button class="btn btn-outline-secondary w-100">
+                <i class="bi bi-chat-dots me-2"></i>Entrar em contato
+            </button>
+        </a>
+    </div>
+</div>
+
+<script>
+    const checkbox = document.getElementById('aceitoTermos');
+    const botao = document.getElementById('btnInscricao');
+    const link = document.getElementById('linkInscricao');
+
+    checkbox.addEventListener('change', function () {
+        botao.disabled = !this.checked;
+
+        if (this.checked) {
+            link.style.pointerEvents = "auto";   // libera clique
+            link.style.opacity = "1";            // visual normal
+        } else {
+            link.style.pointerEvents = "none";   // bloqueia clique
+            link.style.opacity = "0.6";          // visual de desativado
+        }
+    });
+
+    // bloqueia clique logo no início
+    link.style.pointerEvents = "none";
+    link.style.opacity = "0.6";
+</script>
+
           </div>
 
         </div>
@@ -275,7 +312,7 @@
     </div>
   </main>
 
-  <!-- Bootstrap JS (Bundle includes Popper) -->
+ 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

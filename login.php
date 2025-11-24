@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chave de Acesso</title>
-  <!-- Bootstrap CSS -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Estilo customizado mínimo */
+  
     .left-side {
       background: linear-gradient(to right, #d64718, #a03410ff);
       color: #fff;
@@ -22,7 +22,7 @@
 
     
     .full-vh {
-      height: 100vh; /*Pro container ocupar toda altura*/
+      height: 100vh; 
     }
     .botao{
         flex: 1;               
@@ -35,13 +35,13 @@
         cursor: pointer;
         color: #fff;           
         background: #7c1d03ff; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra */
-        transition: all 0.3s ease; /* fica branco quando passa o mouse*/
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2); 
+        transition: all 0.3s ease;
     
     }
     .btn-desativado {
-    background-color: #ccc !important; /* Garante a cor cinza */
-    background-image: none !important; /* REMOVE o gradiente da classe .hero */
+    background-color: #ccc !important; /
+    background-image: none !important; 
     color: #777 !important;
     cursor: not-allowed;
     border: none;
@@ -52,14 +52,14 @@
 </head>
 <body>
 <div class="container-fluid p-0">
-  <div class="row g-0 full-vh">
-    <div class="col-5 d-flex flex-column align-items-center justify-content-start left-side py-3">
+  <div class="container-fluid p-0 left-side d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-sm p-4" style="width: 420px; background: #fff; color: #000; border-radius: 8px;">
       <a href="index.php"><img class="mb-3"src="images\logo.png" alt="LOGO"></a>
       <div class="d-flex w-100 px-3 mb-3">
         <button id="btn-cadastrar" class="botao btn btn-outline-light flex-fill fw-bold me-2">Cadastrar-se</button>
         <button id="btn-login" class="botao btn btn-light flex-fill fw-bold ms-2">Fazer Login</button>
       </div>
-      <!-- Div Login (Chamado pelo javascript)-->
+      
       <div id="login-form" class="card shadow-sm p-4" style="width: 350px;">
         <div class="text-center mb-3">
           <img src="images\cadeado.png" alt="Chave de Acesso" width="50">
