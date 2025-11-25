@@ -1,7 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))session_start();
+if(!isset($_SESSION["id"])) echo "<script>alert('FAÇA O LOGIN!'); window.location.href='index.php';</script>";
+else{
 include("include/conexao.php");
-
 // Aqui futuramente você coloca o SQL pra buscar APENAS os cursos que esse usuário comprou
 $response = $conn->query("SELECT * FROM cursos");
 ?>
@@ -39,11 +40,13 @@ $response = $conn->query("SELECT * FROM cursos");
 
     <!-- CONTEÚDO DOS CURSOS -->
     <div class="container my-4">
-
-        <?php if($response->num_rows > 0){ ?>
             <div class="row mt-4 g-4">
-                <?php while($curso = $response->fetch_assoc()){ ?>
+                <?php while($curso = $response->fetch_assoc()){ 
+                    $verificacao = $conn->query("SELECT id FROM `" . $curso['id'] . "` WHERE id=" . $_SESSION['id']);
+                    if($verificacao->num_rows>0){
+                    ?>
                 <div class="col-lg-3 col-md-6">
+                    <a href="http://localhost/PIC/curso.php?id=<?php echo $curso["id"]; ?>" style="text-decoration: none;">
                     <div class="card shadow-sm border-0 h-100" style="border-radius:12px;">
                         <img src="<?php echo "images/cursos/" . $curso['img_arq']; ?>" 
                              class="card-img-top" 
@@ -64,16 +67,16 @@ $response = $conn->query("SELECT * FROM cursos");
                             </div>
                         </div>
                     </div>
-                </div>
-                <?php } ?>
+                    </a>
+                </div>            
+                <?php 
+                } //fim do if
+            } ?>
             </div>
-        <?php } else { ?>
-            <p class="text-center mt-5">Você ainda não comprou nenhum curso.</p>
-        <?php } ?>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+<?php }?>

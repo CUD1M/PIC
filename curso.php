@@ -216,19 +216,6 @@
                   </div>
                 </div>
 
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="faqHeading4">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                      Onde fica localizada a escola?
-                    </button>
-                  </h2>
-                  <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      A escola fica na Rua José Ferraz de Camargo, 555, no centro de Piracicaba/SP. 
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
@@ -257,9 +244,38 @@
          
           <div class="card register-card card-plain p-3">
     <div class="card-body">
+      <?php 
+        if(!isset($_SESSION["id"])) {
+      ?> 
+      <h6 class="mb-3">Inscrição</h6>
+
+         <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
+            <div class="small-muted">Total:</div>
+            <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
+        </div>
+        <a href="http://localhost/PIC/login.php">
+            <button class="btn btn-secondary w-100 mb-2" disabled>Faça o login para comprar</button>
+        </a>
+        <a href="https://wa.me/+5519997380163">
+            <button class="btn btn-outline-secondary w-100">
+                <i class="bi bi-chat-dots me-2"></i>Entrar em contato
+            </button>
+        </a>
+    </div>
+</div>  
+      <?php  
+        } else{
+        $verificacao = $conn->query("SELECT * FROM `" . $_GET["id"] . "` WHERE id=" . $_SESSION["id"]);
+        if($verificacao->num_rows>0){
+          echo "<div class='text-center alert alert-danger' role='alert'>
+                  Já cadastrado!
+                </div>";
+        }
+          else{
+      ?>
         <h6 class="mb-3">Inscrição</h6>
 
-        <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
+         <div class="p-3 mb-3" style="background:var(--brand-soft); border-radius:8px;">
             <div class="small-muted">Total:</div>
             <div class="price-big"><?php echo "R$ " . $info['preco'] ?></div>
         </div>
@@ -269,12 +285,12 @@
             <label for="aceitoTermos" class="form-check-label">
                 Estou ciente de que o curso pode ser cancelado se não atingir alunos mínimos, com reembolso.
             </label>
-        </div>
+        </div> 
 
         <a id="linkInscricao" href="http://localhost/PIC/processa_pagamento.php?id=<?php echo $_GET['id']; ?>">
             <button id="btnInscricao" class="btn btn-primary w-100 mb-2" disabled>Fazer Inscrição</button>
         </a>
-
+        <?php } ?>
         <a href="https://wa.me/+5519997380163">
             <button class="btn btn-outline-secondary w-100">
                 <i class="bi bi-chat-dots me-2"></i>Entrar em contato
@@ -282,7 +298,7 @@
         </a>
     </div>
 </div>
-
+<?php } ?>
 <script>
     const checkbox = document.getElementById('aceitoTermos');
     const botao = document.getElementById('btnInscricao');

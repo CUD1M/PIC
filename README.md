@@ -3,21 +3,6 @@
 Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
 * OBS: Este website foi programado para usar no pacote de servidores do XAMPP. Não foi testado em outros pracotes.
 
-## LISTA A SE FAZER
-* Lengenda: ⚠️ Pendente - ⚙️ Sendo Feito - ✅ Concluido
-
-    ⚠️ Ajustar funcionalidade de filtros index.php; <br>
-    ⚠️ Ajustar funcionalidade de filtros admin.php; <br>
-    ⚠️ Ajuste fino frontend curso.php; <br>
-    ⚠️ Ajuste fino frontend admin.php; <br>
-    ⚠️ Ajuste fino frontend login.php; <br>
-    ⚠️ Ajuste fino frontend index.php; <br>
-    ⚠️ Inserir preenchimento de termos no cadastro; <br>
-    ⚙️ backend curso.php (Rafael Benaia); <br>
-    ⚙️ Integração plataforma de pagamento AbacatePay (Rafael Benaia); <br>
-
-
-
 ## 🪟 INICIALIZAÇÃO DO SITE
 ### ALOCAÇÃO DO REPOSITÓRIO
 * Faça o download do pacote XAMPP no link: https://www.apachefriends.org/download.html;

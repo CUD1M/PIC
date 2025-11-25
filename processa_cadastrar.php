@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
     if ($check_result->num_rows > 0) {
-        echo "<script>alert('Email ou CPF já cadastrado!'); window.location.href='Chave de acesso.html';</script>";
+        echo "<script>alert('Email ou CPF já cadastrado!'); window.location.href='login.php';</script>";
         $check_stmt->close();
         exit;
     }

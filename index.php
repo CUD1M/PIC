@@ -49,7 +49,6 @@ include ("include\conexao.php");
 
         <?php if($_SESSION["id"]==1){ ?> 
             <a href="admin.php"><button>Admin</button></a>
-            <a href="meus_cursos.php"><button>Meus Cursos</button></a>
         <?php } else { ?>
             <a href="meus_cursos.php"><button>Meus Cursos</button></a>
         <?php } ?>
@@ -130,6 +129,7 @@ include ("include\conexao.php");
       border-radius: 50%;
       padding: 0;
    ">
+   <img src="images/whatsapp.png" style="height: 80%;" alt="whats">
    <i class="bi bi-whatsapp" style="font-size: 26px;"></i>
 </a>
 
