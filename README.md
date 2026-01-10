@@ -1,4 +1,4 @@
-# 🍕 MICHELLE NOVEMBER GASTRONOMIA
+# 🍕 MICHELE NOVEMBRE GASTRONOMIA
 
 Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
 * OBS: Este website foi programado para usar no pacote de servidores do XAMPP. Não foi testado em outros pracotes.
