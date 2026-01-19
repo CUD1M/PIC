@@ -16,7 +16,7 @@ Coloque nesse espaço atualizações e instruções importantes sobre o projeto.
 ### NGROK (NECESSÁRIO PARA O FUNCIONAMENTO DO WEBHOOK)
 * Faça o download do **ngrok** no link: https://apps.microsoft.com/detail/9MVS1J51GMK6?hl=neutral&gl=BR&ocid=pdpshare
 * Abra o aplicativo e coloque os seguintes códigos:
-> **ngrok config add-authtoken** 35c6Pypt04T7kQowXrdZrGDIrhP_tAJCpmsAM5MQnQczQQPa <br>
+> **ngrok config add-authtoken** SEU TOKEN <br>
 > **ngrok http 80**
 
 ## 👾 GITHUB
